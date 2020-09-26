@@ -5,10 +5,20 @@
     </label>
     <label class= "logo">Smart CarPark</label>
     <ul>
-    <li> <a class = "active" href="index.html">Home</li>
+      <li> <a class = "active" href="index.html">Home</li>
       <li><a  href="FindParking.html">Find Parking</li>
       <li><a href="ViewParking.html">View Parking</li>
       <li><a href="map.html"> Map </a></li>
-  </ul>
-  
+      <li><div id='auth-nav'></div></li>
+    </ul>
 </nav>
+<script>
+  const isAuthenticated = localStorage.getItem('isAuthenticated');
+  const logoutElement = '<a class="nav-item nav-link" onClick="logout()">Logout</a>';
+  const loginElement = '<a class="nav-item nav-link" href="/login">Login</a>';
+  if (isAuthenticated) {
+      $('#auth-nav').append(logoutElement);
+  } else {
+      $('#auth-nav').append(loginElement);
+  }
+</script>
