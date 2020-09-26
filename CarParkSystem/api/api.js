@@ -42,7 +42,6 @@ app.get('/api/carpark/:carParkNo',(req, res) => {
 
 });
 
-
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
