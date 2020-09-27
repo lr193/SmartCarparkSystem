@@ -1,17 +1,20 @@
 //run npm install nodemon --save-dev
 const express = require('express'); //npm install express --save
+
 const mongoose = require('mongoose');   //npm install mongoose
-const Device = require('./models/carpark');
+mongoose.connect( "mongodb+srv://hjayatilleke:hjayatilleke@cluster0.elbtc.mongodb.net/register?retryWrites=true&w=majority", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true 
+});
+
+const port = 5000;
 const bodyParser = require('body-parser'); //npm install body-parser --save
 const app = express();
-const bodyParser = require('body-parser');
-
-// mongoose.connect('mongodb+srv://rashmika:rashmika@sit209.ys645.mongodb.net', {useNewUrlParser:true, useUnifiedTopology: true });
-
-const port = process.env.PORT || 5000;
 
 const carpark = require('./models/carpark');
 const slot = require('./models/slot');
+const Device = require('./models/carpark');
+const Register = require('./models/register');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -31,6 +34,7 @@ app.use(function(req, res, next) {
 
 app.use(express.json())
 
+//car park
 app.get('/api/carpark/:carParkNo',(req, res) => {
     const {carParkNo} = req.body;  
 
@@ -123,7 +127,6 @@ app.post('/api/authenticate', (req, res) => {
     });
 
 });
-
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
