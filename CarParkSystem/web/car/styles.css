@@ -9,9 +9,9 @@ body{
   font-family: 'Courier New', Courier, monospace;
 }
 nav{
-  background: #00887f;
+  background: #660066;;
   height:80px;
-  width: 100%;
+  /* width: 100%; */
 
 }
 label.logo{
@@ -31,19 +31,19 @@ nav ul{
 }
 nav ul li{
   display: inline-block;
-  line-height: 80px;
-  margin: 0 5px;
+  line-height: inherit;
+  margin: 2px 5px 2px 5px;
 }
 nav ul li a{
   color:white;
   font-size: 17px;
-  padding: 7px 13px;
+  /* padding: 7px 13px; */
   text-transform: uppercase;
-  border-radius:3px;
+  border-radius:12px;
 }
 
 a.active,a:hover{
-  background:#1b9bff;
+  background: rgb(248, 197, 255);
   transition: .5s;
 }
 /* .center {
@@ -54,7 +54,7 @@ a.active,a:hover{
     height: 100%;
   } */
 
-  .checkbtn{
+  /* .checkbtn{
     font-size: 30px;
     color:white;
     float: right;
@@ -65,7 +65,7 @@ a.active,a:hover{
   }
   #check{
     display: none;
-  }
+  } */
 
   /* @media (max-width: 952px)
   {
