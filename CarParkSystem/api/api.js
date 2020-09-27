@@ -42,6 +42,89 @@ app.get('/api/carpark/:carParkNo',(req, res) => {
 
 });
 
+//registration api
+app.post('/api/registration', (req, res) => {
+    
+    const { user, rego, model, password } = req.body;
+
+    console.log(user+" \n"+rego+"\n"+password);
+
+    Register.findOne({user:user}, (err, register) => {
+
+        if(err){
+            res.send(err)
+            res.send('Unsuccessfull');
+        }
+        else{
+
+            if(register == undefined){
+                //Registration does not exist , can register 
+                const newRegister = new Register({
+                    "user": user,
+                    "vehicle_rego": rego,
+                    "vehicle_model": model,
+                    "password": password
+                });
+
+                newRegister.save(err => {
+                        return err
+                        ? res.send(err)
+                        : res.json({
+                            success: true,
+                            message: 'Created new user'
+                        });
+                });
+
+            }
+            else{
+                //User already exists , cannot register
+                res.send('Registration Number is already exists');
+            }
+
+        }
+        
+    });
+
+});
+
+//login api
+app.post('/api/authenticate', (req, res) => { 
+
+    const { rego, password } = req.body;
+
+    Register.findOne({vehicle_rego:rego}, (err, register) => {
+
+        if(err){
+            res.send(err)
+            res.send('Unsuccessfull');
+        }
+        else{
+
+            if(register == undefined){
+                res.send('user does not found');
+            }else{
+
+                if(register.password == password){
+                    //Password match
+                    return res.json({
+
+                                success: true,
+                                message: 'Authenticated successfully',
+                            });
+                }else{
+                    //password do not match
+                    res.send('Password is not valid');
+                }
+    
+            }
+
+            
+        }
+    });
+
+});
+
+
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
