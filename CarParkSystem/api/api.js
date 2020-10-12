@@ -2,7 +2,7 @@
 const express = require('express'); //npm install express --save
 
 const mongoose = require('mongoose');   //npm install mongoose
-mongoose.connect( "mongodb+srv://hjayatilleke:hjayatilleke@cluster0.elbtc.mongodb.net/register?retryWrites=true&w=majority", {
+mongoose.connect( "mongodb+srv://hjayatilleke:####@cluster0.elbtc.mongodb.net/register?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true 
 });
