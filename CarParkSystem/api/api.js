@@ -13,7 +13,6 @@ const app = express();
 
 const carpark = require('./models/carpark');
 const slot = require('./models/slot');
-const Device = require('./models/carpark');
 const Register = require('./models/register');
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -35,15 +34,17 @@ app.use(function(req, res, next) {
 app.use(express.json())
 
 //car park
-app.get('/api/carpark/:carParkNo',(req, res) => {
-    const {carParkNo} = req.body;  
+app.get('/api/carparkInfo',(req, res) => {
+    var {carparkNo} = req.body;  
 
-    Slot.find({ "slots":carParkNo }, (err, slots) => {
+    carparkNo = 1;
+    console.log(carparkNo);
+
+    slot.find({ "carparkNo":carparkNo }, (err, slots) => {
         return err      
         ? res.send(err)      
         : res.send(slots)  
     });
-
 });
 
 //registration api

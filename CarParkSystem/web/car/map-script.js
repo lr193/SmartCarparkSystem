@@ -115,6 +115,7 @@ function initMap() {
   };
 
   document.getElementById('start').addEventListener('click', onChangeHandler);
+  // document.getElementById('carparkInfo').addEventListener('click', onCarparSelected);
 
 } // End of init function    
 
@@ -404,7 +405,7 @@ function laodMarkers() {
   });
 
   carparkMarker_docklands.addListener('click', function () {
-    infoWindow.setContent('The Docklands carpark! <br> <a href="/carparkinfo" >CHECK THE SLOT AVAILABILITY!</a>');
+    infoWindow.setContent('The Docklands carpark! <br> <a class="carparkInfo" value=3 href="/carparkinfo" >CHECK THE SLOT AVAILABILITY!</a>');
     infoWindow.open(map, carparkMarker_docklands);
   });
 
