@@ -105,7 +105,7 @@ app.post('/api/registration', (req, res) => {
             }
             else{
                 //User already exists , cannot register
-                res.send('Registration Number is already exists');
+                res.send('Unsuccessful Please try again!');
             }
 
         }
