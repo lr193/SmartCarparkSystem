@@ -32,6 +32,11 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.use(express.static(`${__dirname}/public/generated-docs`));
+app.get('/docs', (req, res) => {
+res.sendFile(`${__dirname}/public/generated-docs/index.html`);
+});
+
 app.use(express.json())
 
 //car park
@@ -45,6 +50,24 @@ app.get('/api/carpark/:carParkNo',(req, res) => {
     });
 
 });
+
+/**
+* @api {post} /api/registration 
+* @apiGroup Registration
+* @apiSuccessExample {json} Success-Response:
+* [
+*   {          
+*       "user": Nahid Khan,
+*       "vehicle_rego": 3YT4UI,
+*       "vehicle_model": Benz,
+*       "password": nahid                    
+*   }
+* ]
+* @apiErrorExample {json} Error-Response:
+* {
+*       "Registration Number is already exists"
+* }
+*/
 
 //registration api
 app.post('/api/registration', (req, res) => {
@@ -90,6 +113,22 @@ app.post('/api/registration', (req, res) => {
     });
 
 });
+
+/**
+* @api {post} /api/authenticate 
+* @apiGroup Login
+* @apiSuccessExample {json} Success-Response:
+* [
+*   {          
+*       "vehicle_rego": 3YT4UI,
+*       "password": nahid                    
+*   }
+* ]
+* @apiErrorExample {json} Error-Response:
+* {
+*       "Registration Number is not valid"
+* }
+*/
 
 //login api
 app.post('/api/authenticate', (req, res) => { 
