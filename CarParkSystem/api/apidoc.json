@@ -1,0 +1,7 @@
+{
+    "name": "Smart Car Park System",
+    "version": "1.0.0",
+    "description": "List of endpoints for the Smart Car Park API",
+    "title": "Smart Car Park API",
+    "url": "http://localhost:5000"
+    }
