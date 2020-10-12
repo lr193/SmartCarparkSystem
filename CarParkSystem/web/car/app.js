@@ -50,6 +50,35 @@ $('#login').on('click', function() {
     });          
 });
 
+$('#carparkInfo').on('click', function() {
+   
+    var carparkNo = 8;
+
+    $.get(`${API_URL}/carparkInfo`, { carparkNo })
+    .then((response) =>{
+        if (!response.length == 0) {
+
+            var slotStatus = [response.length];
+            var slotNos = [response.length];
+
+            for(var i = 0; i < response.length; i++){
+                slotStatus[i]= response[i].status;
+                slotNos[i] = response[i].slotNo;
+            }
+            console.log(slotStatus);
+            
+            localStorage.setItem('slotStatus', slotStatus);
+            localStorage.setItem('slotNos', slotNos);
+            location.href = '/slotAvailability';
+        }else{
+            console.log("Passwords do not match!");
+            console.log(response);
+            $('#message').append(`<p class="alert alert-danger">${response}</p>`);
+        }
+    });          
+});
+
+
 const logout = () => {
     localStorage.removeItem('register');
     location.href = '/login';

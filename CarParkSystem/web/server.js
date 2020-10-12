@@ -20,6 +20,10 @@ app.get('/carparkinfo', (req,res) =>{
     res.sendFile(`${base}/carParkInfo.html`)
 })
 
+app.get('/slotAvailability', (req,res) =>{
+    res.sendFile(`${base}/slotAvailability.html`)
+})
+
 app.get('*', (req, res) => {
     res.sendFile(`${base}/404.html`);
 });
